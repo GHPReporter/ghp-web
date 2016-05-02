@@ -1,0 +1,14 @@
+-
+  branches:
+    only:
+    - master
+
+  before_build:
+    - nuget restore GhprWeb/GhprWeb.sln
+
+  build_script: 
+    - msbuild GhprWeb/GhprWeb.sln /p:Configuration=Release /t:Rebuild
+  
+  test:
+    assemblies:
+      - '**\*Tests.dll'
