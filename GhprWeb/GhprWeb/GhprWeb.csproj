@@ -40,12 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmbeddedResources\ResourceExtractor.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EmbeddedResources\Primer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\JQuery\jquery-1.11.0.min.js" />
   </ItemGroup>
@@ -57,6 +56,9 @@
     <EmbeddedResource Include="EmbeddedResources\Octicons\octicons.eot" />
     <EmbeddedResource Include="EmbeddedResources\Octicons\octicons.ttf" />
     <EmbeddedResource Include="EmbeddedResources\Octicons\octicons.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\Primer\primer.css" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

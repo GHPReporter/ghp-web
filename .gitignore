@@ -235,3 +235,7 @@ README.md
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+GhprWeb/.idea/modules.xml
+GhprWeb/.idea/workspace.xml
+GhprWeb/.idea/vcs.xml
+GhprWeb/GhprWeb.sln.iml
