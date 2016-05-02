@@ -6,7 +6,9 @@ namespace GhprWeb.EmbeddedResources
 {
     public class ResourceExtractor
     {
-        private void ExtractResource(string embeddedFileName, string destinationPath, bool replaceExisting = false)
+
+
+        public void ExtractResource(string embeddedFileName, string destinationPath, bool replaceExisting = false)
         {
             var currentAssembly = GetType().Assembly;
             var arrResources = GetType().Assembly.GetManifestResourceNames();
@@ -28,11 +30,11 @@ namespace GhprWeb.EmbeddedResources
             }
         }
 
-        private void ExtractResources(List<string> embeddedFileNames, string destinationPath, )
+        public void ExtractResources(IEnumerable<string> embeddedFileNames, string destinationPath, bool replaceExisting = false)
         {
             foreach (var embeddedFileName in embeddedFileNames)
             {
-                ExtractResource(embeddedFileName, destinationPath);
+                ExtractResource(embeddedFileName, destinationPath, replaceExisting);
             }
         }
     }
