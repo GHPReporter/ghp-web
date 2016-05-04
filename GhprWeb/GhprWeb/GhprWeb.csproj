@@ -41,10 +41,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmbeddedResources\ResourceExtractor.cs" />
-    <Compile Include="Extensions\HtmlTextWriterExtensions.cs" />
+    <Compile Include="EmbeddedResources\Resources.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Attributes.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Buttons\Buttons.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ListTags.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\SimpleText.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Styles\CssClass.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ATag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\BTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\DivTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\FooterTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\H1Tag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\H2Tag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LabelTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LinkTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LiTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\PTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ScriptTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\SpanTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TitleTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\UlTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\CommonTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="EmbeddedResources\Tablesort\tablesort.min.js" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\JQuery\jquery-1.11.0.min.js" />
   </ItemGroup>
@@ -60,6 +82,7 @@
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\Primer\primer.css" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

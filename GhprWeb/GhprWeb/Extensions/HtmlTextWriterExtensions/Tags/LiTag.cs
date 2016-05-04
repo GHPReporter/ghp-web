@@ -1,4 +1,5 @@
-﻿using System.Web.UI;
+﻿using System;
+using System.Web.UI;
 
 namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
 {
@@ -7,6 +8,11 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
         public static HtmlTextWriter Li(this HtmlTextWriter writer, string value)
         {
             return writer.Tag(HtmlTextWriterTag.Li, value);
+        }
+
+        public static HtmlTextWriter Li(this HtmlTextWriter writer, Action someAction)
+        {
+            return writer.Tag(HtmlTextWriterTag.Li, someAction);
         }
     }
 }

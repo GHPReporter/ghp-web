@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Web.UI;
 using GhprWeb.Extensions.HtmlTextWriterExtensions.Styles;
-using GhprWeb.Extensions.HtmlTextWriterExtensions.Tags;
 
-namespace GhprWeb.Extensions.HtmlTextWriterExtensions
+namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
 {
     public static class ListTags
     {
