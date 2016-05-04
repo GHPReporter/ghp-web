@@ -62,6 +62,7 @@
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TitleTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\UlTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\CommonTag.cs" />
+    <Compile Include="Html\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

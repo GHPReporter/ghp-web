@@ -4,7 +4,7 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Styles
 {
     public static class CssClass
     {
-        public static HtmlTextWriter CssShadow(this HtmlTextWriter writer, string value)
+        public static HtmlTextWriter Shadow(this HtmlTextWriter writer, string value)
         {
             return writer
                 .WithAttr("box-shadow", value)
@@ -12,13 +12,13 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Styles
                 .WithAttr("-webkit-box-shadow", value);
         }
 
-        public static HtmlTextWriter Css(this HtmlTextWriter writer, string styleAttr, string value)
+        public static HtmlTextWriter Style(this HtmlTextWriter writer, string styleAttr, string value)
         {
             writer.AddStyleAttribute(styleAttr, value);
             return writer;
         }
 
-        public static HtmlTextWriter Css(this HtmlTextWriter writer, HtmlTextWriterStyle styleAttr, string value)
+        public static HtmlTextWriter Style(this HtmlTextWriter writer, HtmlTextWriterStyle styleAttr, string value)
         {
             writer.AddStyleAttribute(styleAttr, value);
             return writer;
