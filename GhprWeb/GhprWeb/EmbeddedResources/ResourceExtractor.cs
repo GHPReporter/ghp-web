@@ -47,18 +47,18 @@ namespace GhprWeb.EmbeddedResources
             var currentAssembly = GetType().Assembly;
             var arrResources = GetType().Assembly.GetManifestResourceNames();
             var destinationFullPath = Path.Combine(destinationPath, embeddedFileName);
-            if (!File.Exists(destinationFullPath) || replaceExisting)
+
+            if (File.Exists(destinationFullPath) && !replaceExisting) return;
+
+            foreach (var resourceName in arrResources.Where(resourceName => resourceName.ToUpper().EndsWith(embeddedFileName.ToUpper())))
             {
-                foreach (var resourceName in arrResources.Where(resourceName => resourceName.ToUpper().EndsWith(embeddedFileName.ToUpper())))
+                using (var resourceToSave = currentAssembly.GetManifestResourceStream(resourceName))
                 {
-                    using (var resourceToSave = currentAssembly.GetManifestResourceStream(resourceName))
+                    using (var output = File.Create(destinationFullPath))
                     {
-                        using (var output = File.Create(destinationFullPath))
-                        {
-                            resourceToSave?.CopyTo(output);
-                        }
-                        resourceToSave?.Close();
+                        resourceToSave?.CopyTo(output);
                     }
+                    resourceToSave?.Close();
                 }
             }
         }
