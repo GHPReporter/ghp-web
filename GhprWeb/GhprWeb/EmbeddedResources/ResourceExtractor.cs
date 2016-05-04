@@ -7,14 +7,14 @@ namespace GhprWeb.EmbeddedResources
 {
     public class ResourceExtractor
     {
-        public void Extract(Resource resource, string destinationPath, bool replaceExisting = false)
+        public void Extract(Resources.Resource resource, string destinationPath, bool replaceExisting = false)
         {
             switch (resource)
             {
-                case Resource.JQuery:
+                case Resources.Resource.JQuery:
                     ExtractResource("jquery-1.11.0.min.js", destinationPath, replaceExisting);
                     break;
-                case Resource.Octicons:
+                case Resources.Resource.Octicons:
                     ExtractResources(
                         new List<string>
                         {
@@ -28,10 +28,10 @@ namespace GhprWeb.EmbeddedResources
                         replaceExisting
                         );
                     break;
-                case Resource.Primer:
+                case Resources.Resource.Primer:
                     ExtractResource("primer.css", destinationPath, replaceExisting);
                     break;
-                case Resource.Tablesort:
+                case Resources.Resource.Tablesort:
                     ExtractResource("tablesort.min.js", destinationPath, replaceExisting);
                     break;
                 default:
