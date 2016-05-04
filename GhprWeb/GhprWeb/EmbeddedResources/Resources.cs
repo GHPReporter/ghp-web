@@ -7,7 +7,8 @@
             JQuery,
             Octicons,
             Primer,
-            Tablesort
+            Tablesort,
+            SvgJs
         }
     }
 }

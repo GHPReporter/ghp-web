@@ -31,6 +31,9 @@ namespace GhprWeb.EmbeddedResources
                 case Resources.Resource.Primer:
                     ExtractResource("primer.css", destinationPath, replaceExisting);
                     break;
+                case Resources.Resource.SvgJs:
+                    ExtractResource("svg.min.js", destinationPath, replaceExisting);
+                    break;
                 case Resources.Resource.Tablesort:
                     ExtractResource("tablesort.min.js", destinationPath, replaceExisting);
                     break;
