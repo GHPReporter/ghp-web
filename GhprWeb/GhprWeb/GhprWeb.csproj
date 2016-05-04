@@ -66,6 +66,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="EmbeddedResources\SvgJs\svg.min.js" />
     <Content Include="EmbeddedResources\Tablesort\tablesort.min.js" />
   </ItemGroup>
   <ItemGroup>
