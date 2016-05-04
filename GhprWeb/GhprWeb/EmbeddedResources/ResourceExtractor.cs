@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -6,7 +7,37 @@ namespace GhprWeb.EmbeddedResources
 {
     public class ResourceExtractor
     {
-
+        public void Extract(Resource resource, string destinationPath, bool replaceExisting = false)
+        {
+            switch (resource)
+            {
+                case Resource.JQuery:
+                    ExtractResource("jquery-1.11.0.min.js", destinationPath, replaceExisting);
+                    break;
+                case Resource.Octicons:
+                    ExtractResources(
+                        new List<string>
+                        {
+                            "octicons.css",
+                            "octicons.eot",
+                            "octicons.svg",
+                            "octicons.ttf",
+                            "octicons.woff"
+                        },
+                        destinationPath,
+                        replaceExisting
+                        );
+                    break;
+                case Resource.Primer:
+                    ExtractResource("primer.css", destinationPath, replaceExisting);
+                    break;
+                case Resource.Tablesort:
+                    ExtractResource("tablesort.min.js", destinationPath, replaceExisting);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(resource), resource, null);
+            }
+        }
 
         public void ExtractResource(string embeddedFileName, string destinationPath, bool replaceExisting = false)
         {
@@ -15,8 +46,7 @@ namespace GhprWeb.EmbeddedResources
             var destinationFullPath = Path.Combine(destinationPath, embeddedFileName);
             if (!File.Exists(destinationFullPath) || replaceExisting)
             {
-                foreach (var resourceName in arrResources
-                    .Where(resourceName => resourceName.ToUpper().EndsWith(embeddedFileName.ToUpper())))
+                foreach (var resourceName in arrResources.Where(resourceName => resourceName.ToUpper().EndsWith(embeddedFileName.ToUpper())))
                 {
                     using (var resourceToSave = currentAssembly.GetManifestResourceStream(resourceName))
                     {
