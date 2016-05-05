@@ -1,6 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
+﻿using System.IO;
+using GhprWeb;
 using GhprWeb.EmbeddedResources;
 using GhprWeb.Extensions;
 using GhprWeb.Extensions.HtmlTextWriterExtensions;
@@ -12,32 +11,51 @@ namespace GhprWebConsole
 {
     public static class PageGenerator
     {
-        public static string CurrentPath
-        {
-            get
-            {
-                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                var uri = new UriBuilder(codeBase);
-                var path = Uri.UnescapeDataString(uri.Path);
-
-                return Path.GetDirectoryName(path);
-            }
-        }
-
         public static void GenerateTestPage(string path = "", string name = "")
         {
-            var pageResources = new[] {Resource.Octicons, Resource.Primer};
+            var pageResources = new[] {Resource.Octicons, Resource.Primer, Resource.Tablesort};
 
-            var re = new ResourceExtractor(Path.Combine(CurrentPath, "src"), "./src");
+            var re = new ResourceExtractor(Path.Combine(Utils.CurrentPath, "src"), @".\src");
             re.Extract(pageResources);
 
             var page = new HtmlPage("Test page")
             {
-                PageBodyCode = HtmlBuilder.Build(w => w.Div(() => w.Text("Text"))),
-                PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css)
+                PageBodyCode = HtmlBuilder
+                    .Build(w => w
+                        .Div(() => w
+                            .H2("Text")
+                            .Id("table-example")
+                            .Table(() => w
+                                .NoSortTh("Name")
+                                .Th("City")
+                                .Th("Score")
+                                
+                                //.Tr(() => w
+                                //    .NoSortTh("Name")
+                                //    .Th("City")
+                                //    .Th("Score")
+                                //)
+                                .Tr(() => w
+                                    .Td("Elvis")
+                                    .Td("NYC")
+                                    .Td("150"))
+                                .Tr(() => w
+                                    .Td("Jane")
+                                    .Td("Moscow")
+                                    .Td("123"))
+                                .Tr(() => w
+                                    .Td("John")
+                                    .Td("Saint-Peterburg")
+                                    .Td("154"))
+                            )
+                            .Script(@"new Tablesort(document.getElementById('table-example'));")
+                        )
+                    ),
+                PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css),
+                ScriptFilePaths = re.GetResoucresPaths(pageResources, Extension.Js)
             };
             
-            page.SavePage(path.Equals("") ? CurrentPath : path, name.Equals("") ? "index.html" : name);
+            page.SavePage(path.Equals("") ? Utils.CurrentPath : path, name.Equals("") ? "index.html" : name);
         }
     }
 }

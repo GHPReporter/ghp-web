@@ -60,15 +60,21 @@
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\PTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ScriptTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\SpanTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TableTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TdTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ThTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TitleTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TrTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\UlTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\CommonTag.cs" />
     <Compile Include="Html\HtmlPage.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EmbeddedResources\SvgJs\svg.min.js" />
-    <Content Include="EmbeddedResources\Tablesort\tablesort.min.js" />
+    <EmbeddedResource Include="EmbeddedResources\SvgJs\svg.min.js" />
+    <EmbeddedResource Include="EmbeddedResources\Tablesort\tablesort.min.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\JQuery\jquery-1.11.0.min.js" />

@@ -9,5 +9,10 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
         {
             return writer.Tag(HtmlTextWriterTag.Div, someAction);
         }
+
+        public static HtmlTextWriter Container(this HtmlTextWriter writer, Action someAction)
+        {
+            return writer.Class("container").Tag(HtmlTextWriterTag.Div, someAction);
+        }
     }
 }

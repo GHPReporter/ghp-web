@@ -49,16 +49,14 @@ namespace GhprWeb.Html
                 .Tag(HtmlTextWriterTag.Body, () => wr
                     .Class("border-bottom p-3 mb-3 bg-gray")
                     .Div(() => wr
-                        .Class("container")
-                        .Div(() => wr
+                        .Container(() => wr
                             .TextAlign("center")
                             .Div(() => wr
                                 .H1(PageTitle)
                             )
                         )
                     )
-                    .Class("container")
-                    .Tag(HtmlTextWriterTag.Div, () => wr
+                    .Container(() => wr
                         .Write(PageBodyCode)
                     )
                 )

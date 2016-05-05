@@ -52,7 +52,7 @@ namespace GhprWeb.EmbeddedResources
             var destinationFullPath = Path.Combine(destinationPath, embeddedFileName);
 
             if (File.Exists(destinationFullPath) && !replaceExisting) return;
-
+            
             foreach (var resourceName in arrResources.Where(resourceName => resourceName.ToUpper().EndsWith(embeddedFileName.ToUpper())))
             {
                 using (var resourceToSave = currentAssembly.GetManifestResourceStream(resourceName))
