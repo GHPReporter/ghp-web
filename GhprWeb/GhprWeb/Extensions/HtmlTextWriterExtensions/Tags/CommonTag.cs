@@ -30,6 +30,15 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
             return writer;
         }
 
+        public static HtmlTextWriter ForEach<T>(this HtmlTextWriter writer, T[] objects, Action<T> action)
+        {
+            foreach (var obj in objects)
+            {
+                action.Invoke(obj);
+            }
+            return writer;
+        }
+
         public static HtmlTextWriter Tag(this HtmlTextWriter writer, HtmlTextWriterTag tag,
             Dictionary<HtmlTextWriterAttribute, string> attributes, string value = "")
         {
