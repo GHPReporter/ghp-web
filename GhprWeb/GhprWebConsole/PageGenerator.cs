@@ -28,44 +28,48 @@ namespace GhprWebConsole
             {
                 PageBodyCode = HtmlBuilder
                     .Build(w => w
-                        .Div(() => w
+                        .Columns(() => w
                             .H1("Text size h1")
-                            .H2("Text size h2")
-                            .SortableTable(
-                                new[] {"Name", "City", "Score"}, 
-                                new[] {"John", "Saint-Petersburg", "154"}, 
-                                new[] {"Elvis", "NYC", "150"}, 
-                                new[] {"Jane", "Moscow", "123"})
-                            .SortableTable(
-                                new List<string> { "Name", "City", "Score" },
-                                new List<List<string>>
-                                {
-                                    new List<string> {"John", "Saint-Petersburg", "154"},
-                                    new List<string> {"Elvis", "NYC", "150"},
-                                    new List<string> {"Jane", "Moscow", "123"}
-                                }
+                            .OneThirdColumn(() => w
+                                .H2("Table (h2)")
+                                .SortableTable(
+                                    new[] {"Name", "City", "Score"},
+                                    new[] {"John", "Saint-Petersburg", "154"},
+                                    new[] {"Elvis", "NYC", "150"},
+                                    new[] {"Jane", "Moscow", "123"})
                             )
-                            .SortableTable(() => w
-                                .THead(() => w
-                                    .Tr(() => w
-                                        .Th("Name")
-                                        .Th("City (no sortable)", false)
-                                        .Th("Score")
-                                    )
+                            .TwoThirdsColumn(() => w
+                                .SortableTable(
+                                    new List<string> { "Name", "City", "Score" },
+                                    new List<List<string>>
+                                    {
+                                        new List<string> {"John", "Saint-Petersburg", "154"},
+                                        new List<string> {"Elvis", "NYC", "150"},
+                                        new List<string> {"Jane", "Moscow", "123"}
+                                    }
                                 )
-                                .TBody(() => w
-                                    .Tr(() => w
-                                        .Td("Elvis")
-                                        .Td("NYC")
-                                        .Td("150"))
-                                    .Tr(() => w
-                                        .Td("Jane")
-                                        .Td("Moscow")
-                                        .Td("123"))
-                                    .Tr(() => w
-                                        .Td("John")
-                                        .Td("Saint-Peterburg")
-                                        .Td("154"))
+                                .SortableTable(() => w
+                                    .THead(() => w
+                                        .Tr(() => w
+                                            .Th("Name")
+                                            .Th("City (no sortable)", false)
+                                            .Th("Score")
+                                        )
+                                    )
+                                    .TBody(() => w
+                                        .Tr(() => w
+                                            .Td("Elvis")
+                                            .Td("NYC")
+                                            .Td("150"))
+                                        .Tr(() => w
+                                            .Td("Jane")
+                                            .Td("Moscow")
+                                            .Td("123"))
+                                        .Tr(() => w
+                                            .Td("John")
+                                            .Td("Saint-Peterburg")
+                                            .Td("154"))
+                                    )
                                 )
                             )
                         )
@@ -73,7 +77,7 @@ namespace GhprWebConsole
                 PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css),
                 ScriptFilePaths = re.GetResoucresPaths(pageResources, Extension.Js)
             };
-            
+
             page.SavePage(path.Equals("") ? Utils.CurrentPath : path, name.Equals("") ? "index.html" : name);
         }
     }
