@@ -61,7 +61,9 @@
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ScriptTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\SpanTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TableTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TBodyTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TdTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\THeadTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ThTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TitleTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\TrTag.cs" />
@@ -91,7 +93,9 @@
   <ItemGroup>
     <EmbeddedResource Include="EmbeddedResources\Primer\primer.css" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="EmbeddedResources\Github\github.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

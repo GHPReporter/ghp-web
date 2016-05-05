@@ -8,7 +8,8 @@
             Octicons,
             Primer,
             Tablesort,
-            SvgJs
+            SvgJs,
+            Github
         }
 
         public struct Extension

@@ -13,7 +13,13 @@ namespace GhprWebConsole
     {
         public static void GenerateTestPage(string path = "", string name = "")
         {
-            var pageResources = new[] {Resource.Octicons, Resource.Primer, Resource.Tablesort};
+            var pageResources = new[]
+            {
+                Resource.Octicons,
+                Resource.Primer,
+                Resource.Tablesort,
+                Resource.Github
+            };
 
             var re = new ResourceExtractor(Path.Combine(Utils.CurrentPath, "src"), @".\src");
             re.Extract(pageResources);
@@ -26,27 +32,27 @@ namespace GhprWebConsole
                             .H2("Text")
                             .Id("table-example")
                             .Table(() => w
-                                .NoSortTh("Name")
-                                .Th("City")
-                                .Th("Score")
-                                
-                                //.Tr(() => w
-                                //    .NoSortTh("Name")
-                                //    .Th("City")
-                                //    .Th("Score")
-                                //)
-                                .Tr(() => w
-                                    .Td("Elvis")
-                                    .Td("NYC")
-                                    .Td("150"))
-                                .Tr(() => w
-                                    .Td("Jane")
-                                    .Td("Moscow")
-                                    .Td("123"))
-                                .Tr(() => w
-                                    .Td("John")
-                                    .Td("Saint-Peterburg")
-                                    .Td("154"))
+                                .THead(() => w
+                                    .Tr(() => w
+                                        .NoSortTh("Name")
+                                        .Th("City")
+                                        .Th("Score")
+                                    )
+                                )
+                                .TBody(() => w
+                                    .Tr(() => w
+                                        .Td("Elvis")
+                                        .Td("NYC")
+                                        .Td("150"))
+                                    .Tr(() => w
+                                        .Td("Jane")
+                                        .Td("Moscow")
+                                        .Td("123"))
+                                    .Tr(() => w
+                                        .Td("John")
+                                        .Td("Saint-Peterburg")
+                                        .Td("154"))
+                                )
                             )
                             .Script(@"new Tablesort(document.getElementById('table-example'));")
                         )

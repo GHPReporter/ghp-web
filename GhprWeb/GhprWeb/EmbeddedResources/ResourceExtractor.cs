@@ -92,6 +92,8 @@ namespace GhprWeb.EmbeddedResources
                         };
                 case Resource.Primer:
                     return new List<string> { "primer.css" };
+                case Resource.Github:
+                    return new List<string> { "github.css" };
                 case Resource.SvgJs:
                     return new List<string> { "svg.min.js" };
                 case Resource.Tablesort:
