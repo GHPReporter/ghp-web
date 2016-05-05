@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using GhprWeb.EmbeddedResources;
@@ -29,13 +28,13 @@ namespace GhprWebConsole
         {
             var pageResources = new[] {Resource.Octicons, Resource.Primer};
 
-            var re = new ResourceExtractor(Path.Combine(CurrentPath, "src"));
+            var re = new ResourceExtractor(Path.Combine(CurrentPath, "src"), "./src");
             re.Extract(pageResources);
 
             var page = new HtmlPage("Test page")
             {
                 PageBodyCode = HtmlBuilder.Build(w => w.Div(() => w.Text("Text"))),
-                PageStylePaths = re.GetResoucresPaths(pageResources)
+                PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css)
             };
             
             page.SavePage(path.Equals("") ? CurrentPath : path, name.Equals("") ? "index.html" : name);

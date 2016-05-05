@@ -8,13 +8,15 @@ namespace GhprWeb.EmbeddedResources
 {
     public class ResourceExtractor
     {
-        public string DestinationPath { get; private set; }
+        public string DestinationPathFull { get; private set; }
+        public string DestinationPathRelative { get; private set; }
         public bool ReplaceExisting { get; private set; }
         public Resource[] CurrentResources { get; private set; }
 
-        public ResourceExtractor(string destPath = "", bool replaceExisting = false, Resource[] resources = null)
+        public ResourceExtractor(string destPathFull, string destPathRelative = "", bool replaceExisting = false, Resource[] resources = null)
         {
-            DestinationPath = destPath;
+            DestinationPathFull = destPathFull;
+            DestinationPathRelative = destPathRelative;
             ReplaceExisting = replaceExisting;
             CurrentResources = resources;
         }
@@ -23,7 +25,7 @@ namespace GhprWeb.EmbeddedResources
         {
             if (destinationPath.Equals(""))
             {
-                destinationPath = DestinationPath;
+                destinationPath = DestinationPathFull;
             }
 
             ExtractResources(GetNames(resource), destinationPath, replaceExisting);
@@ -34,7 +36,7 @@ namespace GhprWeb.EmbeddedResources
         {
             if (destinationPath.Equals(""))
             {
-                destinationPath = DestinationPath;
+                destinationPath = DestinationPathFull;
             }
             foreach (var resource in resources)
             {
@@ -99,17 +101,30 @@ namespace GhprWeb.EmbeddedResources
             }
         }
 
-        public List<string> GetResoucrePaths(Resource resource)
+        public List<string> GetResoucrePaths(Resource resource, string resourceExtension = "")
         {
-            return GetNames(resource).Select(name => Path.Combine(DestinationPath, name)).ToList();
+            if (resourceExtension.Equals(""))
+            {
+                return GetNames(resource).Select(name => Path.Combine(
+                    DestinationPathRelative.Equals("") 
+                    ? DestinationPathFull
+                    : DestinationPathRelative, name)).ToList();
+            }
+
+            return GetNames(resource)
+                .Where(n => n.ToLower().EndsWith(resourceExtension.ToLower()))
+                .Select(name => Path.Combine(
+                    DestinationPathRelative.Equals("")
+                    ? DestinationPathFull
+                    : DestinationPathRelative, name)).ToList();
         }
 
-        public List<string> GetResoucresPaths(Resource[] resources)
+        public List<string> GetResoucresPaths(Resource[] resources, string resourceExtension = "")
         {
             var paths = new List<string>();
             foreach (var resource in resources)
             {
-                paths.AddRange(GetResoucrePaths(resource));
+                paths.AddRange(GetResoucrePaths(resource, resourceExtension));
             }
             return paths;
         }
