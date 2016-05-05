@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using GhprWeb.Extensions.HtmlTextWriterExtensions.Styles;
 
 namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
 {
@@ -8,6 +9,16 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
         public static HtmlTextWriter Div(this HtmlTextWriter writer, Action someAction)
         {
             return writer
+                .Tag(HtmlTextWriterTag.Div, someAction);
+        }
+
+        public static HtmlTextWriter TogglableDiv(this HtmlTextWriter writer, string id, bool isDisplayed, Action someAction)
+        {
+            return writer
+                .Id(id)
+                .Class("togglable-div")
+                .If(!isDisplayed, () => writer
+                    .Display("none"))
                 .Tag(HtmlTextWriterTag.Div, someAction);
         }
 

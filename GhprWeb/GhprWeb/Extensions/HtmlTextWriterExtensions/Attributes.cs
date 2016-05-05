@@ -22,6 +22,12 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions
             return writer;
         }
 
+        public static HtmlTextWriter OnClick(this HtmlTextWriter writer, string value)
+        {
+            writer.AddAttribute(HtmlTextWriterAttribute.Onclick, value);
+            return writer;
+        }
+
         public static HtmlTextWriter Class(this HtmlTextWriter writer, string value)
         {
             writer.AddAttribute(HtmlTextWriterAttribute.Class, value);

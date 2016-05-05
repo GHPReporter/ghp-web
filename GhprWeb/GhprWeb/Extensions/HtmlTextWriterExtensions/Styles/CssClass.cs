@@ -65,5 +65,11 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Styles
             writer.AddStyleAttribute("text-align", value);
             return writer;
         }
+
+        public static HtmlTextWriter Display(this HtmlTextWriter writer, string value)
+        {
+            writer.AddStyleAttribute(HtmlTextWriterStyle.Display, value);
+            return writer;
+        }
     }
 }

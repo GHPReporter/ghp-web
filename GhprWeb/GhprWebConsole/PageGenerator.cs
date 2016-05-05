@@ -2,6 +2,7 @@
 using GhprWeb;
 using GhprWeb.EmbeddedResources;
 using GhprWeb.Extensions;
+using GhprWeb.Extensions.HtmlTextWriterExtensions;
 using GhprWeb.Extensions.HtmlTextWriterExtensions.Tags;
 using GhprWeb.Html;
 using static GhprWeb.EmbeddedResources.Resources;
@@ -66,11 +67,24 @@ namespace GhprWebConsole
                         )
                         .TabNav(() => w
                             .TabNavTabs(() => w
-                                .TabNavTab("Flame", "#", "octicon octicon-flame", true)
-                                .TabNavTab("Bug", "#", "octicon octicon-bug")
-                                .TabNavTab("Dashboard", "#", "octicon octicon-dashboard")
-                                .TabNavTab("Globe", "#", "octicon octicon-globe")
+                                .TabNavTab("Flame", "#flame-div", "octicon octicon-flame", true)
+                                .TabNavTab("Bug", "#bug-div", "octicon octicon-bug")
+                                .TabNavTab("Dashboard", "#dashboard-div", "octicon octicon-dashboard")
+                                .TabNavTab("Globe", "#globe-div", "octicon octicon-globe")
                             )
+                        )
+                        .TogglableDiv("flame-div", false, () => w
+                            .H1("Flame!")
+                        )
+                        .TogglableDiv("bug-div", false, () => w
+                            .H1("Flame!")
+                        )
+                        .TogglableDiv("dashboard-div", false, () => w
+                            .H1("Flame!")
+                        )
+                        .TogglableDiv("globe-div", false, () => w
+                            .H2("Globe")
+                            .Text("globe")
                         )
                     ),
                 PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css),
