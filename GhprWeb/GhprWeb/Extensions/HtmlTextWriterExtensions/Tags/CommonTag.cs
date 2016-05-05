@@ -132,6 +132,13 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
             return writer.CloseTag();
         }
 
+        public static HtmlTextWriter Tag(this HtmlTextWriter writer, string tag, Action someAction)
+        {
+            writer.OpenTag(tag);
+            someAction.Invoke();
+            return writer.CloseTag();
+        }
+
         public static HtmlTextWriter Tag(this HtmlTextWriter writer, HtmlTextWriterTag tag, Action<HtmlTextWriter> someAction)
         {
             writer.OpenTag(tag);

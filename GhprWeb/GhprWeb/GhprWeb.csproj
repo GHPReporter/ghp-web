@@ -57,6 +57,7 @@
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LabelTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LinkTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\LiTag.cs" />
+    <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\NavTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\PTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\ScriptTag.cs" />
     <Compile Include="Extensions\HtmlTextWriterExtensions\Tags\SpanTag.cs" />

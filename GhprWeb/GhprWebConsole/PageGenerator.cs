@@ -31,44 +31,35 @@ namespace GhprWebConsole
                         .Columns(() => w
                             .H1("Text size h1")
                             .OneThirdColumn(() => w
-                                .H2("Table (h2)")
+                                .H2("One third: Table (h2)")
                                 .SortableTable(
                                     new[] {"Name", "City", "Score"},
                                     new[] {"John", "Saint-Petersburg", "154"},
                                     new[] {"Elvis", "NYC", "150"},
                                     new[] {"Jane", "Moscow", "123"})
+                                .Menu(() => w
+                                    .MenuItem("button 1")
+                                    .MenuItem("button 2")
+                                    .MenuItem("button 3")
+                                )
                             )
                             .TwoThirdsColumn(() => w
-                                .SortableTable(
-                                    new List<string> { "Name", "City", "Score" },
-                                    new List<List<string>>
-                                    {
-                                        new List<string> {"John", "Saint-Petersburg", "154"},
-                                        new List<string> {"Elvis", "NYC", "150"},
-                                        new List<string> {"Jane", "Moscow", "123"}
-                                    }
+                                .H2("Two thirds")
+                                .Menu(
+                                    new[] { "Graph", "#", "octicon octicon-graph" },
+                                    new[] { "Checklist", "#", "octicon octicon-checklist" },
+                                    new[] { "Clock", "#", "octicon octicon-clock" }
                                 )
                                 .SortableTable(() => w
                                     .THead(() => w
                                         .Tr(() => w
-                                            .Th("Name")
-                                            .Th("City (no sortable)", false)
-                                            .Th("Score")
+                                            .Th("Name").Th("City (no sortable)", false).Th("Score")
                                         )
                                     )
                                     .TBody(() => w
-                                        .Tr(() => w
-                                            .Td("Elvis")
-                                            .Td("NYC")
-                                            .Td("150"))
-                                        .Tr(() => w
-                                            .Td("Jane")
-                                            .Td("Moscow")
-                                            .Td("123"))
-                                        .Tr(() => w
-                                            .Td("John")
-                                            .Td("Saint-Peterburg")
-                                            .Td("154"))
+                                        .Tr(() => w.Td("Elvis").Td("NYC").Td("150"))
+                                        .Tr(() => w.Td("Jane").Td("Moscow").Td("123"))
+                                        .Tr(() => w.Td("John").Td("Saint-Peterburg").Td("154"))
                                     )
                                 )
                             )

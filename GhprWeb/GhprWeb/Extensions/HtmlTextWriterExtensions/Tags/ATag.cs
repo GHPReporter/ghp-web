@@ -14,5 +14,21 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
         {
             return writer.Tag(HtmlTextWriterTag.A, someAction);
         }
+
+        public static HtmlTextWriter MenuItem(this HtmlTextWriter writer, string itemText, string itemHref = "", string itemOcticon = "")
+        {
+            writer
+                .Class("menu-item")
+                .If(!itemHref.Equals(""), () => writer
+                    .Href(itemHref))
+                .A(() => writer
+                    .If(!itemOcticon.Equals(""), () => writer
+                        .Class(itemOcticon)
+                        .Span()
+                    )
+                    .Text(itemText)
+                );
+            return writer;
+        }
     }
 }
