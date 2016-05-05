@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using GhprWeb;
 using GhprWeb.EmbeddedResources;
 using GhprWeb.Extensions;
-using GhprWeb.Extensions.HtmlTextWriterExtensions;
 using GhprWeb.Extensions.HtmlTextWriterExtensions.Tags;
 using GhprWeb.Html;
 using static GhprWeb.EmbeddedResources.Resources;
@@ -29,13 +29,27 @@ namespace GhprWebConsole
                 PageBodyCode = HtmlBuilder
                     .Build(w => w
                         .Div(() => w
-                            .H2("Text")
-                            .Id("table-example")
-                            .Table(() => w
+                            .H1("Text size h1")
+                            .H2("Text size h2")
+                            .SortableTable(
+                                new[] {"Name", "City", "Score"}, 
+                                new[] {"John", "Saint-Petersburg", "154"}, 
+                                new[] {"Elvis", "NYC", "150"}, 
+                                new[] {"Jane", "Moscow", "123"})
+                            .SortableTable(
+                                new List<string> { "Name", "City", "Score" },
+                                new List<List<string>>
+                                {
+                                    new List<string> {"John", "Saint-Petersburg", "154"},
+                                    new List<string> {"Elvis", "NYC", "150"},
+                                    new List<string> {"Jane", "Moscow", "123"}
+                                }
+                            )
+                            .SortableTable(() => w
                                 .THead(() => w
                                     .Tr(() => w
-                                        .NoSortTh("Name")
-                                        .Th("City")
+                                        .Th("Name")
+                                        .Th("City (no sortable)", false)
                                         .Th("Score")
                                     )
                                 )
@@ -54,7 +68,6 @@ namespace GhprWebConsole
                                         .Td("154"))
                                 )
                             )
-                            .Script(@"new Tablesort(document.getElementById('table-example'));")
                         )
                     ),
                 PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css),
