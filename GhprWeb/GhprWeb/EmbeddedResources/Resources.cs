@@ -1,6 +1,6 @@
 ﻿namespace GhprWeb.EmbeddedResources
 {
-    public class Resources
+    public static class Resources
     {
         public enum Resource
         {
