@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using GhprWeb;
 using GhprWeb.EmbeddedResources;
 using GhprWeb.Extensions;
@@ -18,7 +17,8 @@ namespace GhprWebConsole
                 Resource.Octicons,
                 Resource.Primer,
                 Resource.Tablesort,
-                Resource.Github
+                Resource.Github,
+                Resource.JQuery 
             };
 
             var re = new ResourceExtractor(Path.Combine(Utils.CurrentPath, "src"), @".\src");
@@ -37,7 +37,7 @@ namespace GhprWebConsole
                                     new[] {"John", "Saint-Petersburg", "154"},
                                     new[] {"Elvis", "NYC", "150"},
                                     new[] {"Jane", "Moscow", "123"})
-                                .Menu(() => w
+                                .Menu("Menu heading", () => w
                                     .MenuItem("button 1")
                                     .MenuItem("button 2")
                                     .MenuItem("button 3")
@@ -62,6 +62,14 @@ namespace GhprWebConsole
                                         .Tr(() => w.Td("John").Td("Saint-Peterburg").Td("154"))
                                     )
                                 )
+                            )
+                        )
+                        .TabNav(() => w
+                            .TabNavTabs(() => w
+                                .TabNavTab("Flame", "#", "octicon octicon-flame", true)
+                                .TabNavTab("Bug", "#", "octicon octicon-bug")
+                                .TabNavTab("Dashboard", "#", "octicon octicon-dashboard")
+                                .TabNavTab("Globe", "#", "octicon octicon-globe")
                             )
                         )
                     ),

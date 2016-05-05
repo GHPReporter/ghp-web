@@ -38,5 +38,12 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
                 .Class("two-thirds column")
                 .Tag(HtmlTextWriterTag.Div, someAction);
         }
+
+        public static HtmlTextWriter TabNav(this HtmlTextWriter writer, Action someAction)
+        {
+            return writer
+                .Class("tabnav")
+                .Tag(HtmlTextWriterTag.Div, someAction);
+        }
     }
 }

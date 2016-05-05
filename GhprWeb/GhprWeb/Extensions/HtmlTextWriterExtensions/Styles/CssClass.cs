@@ -30,6 +30,12 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Styles
             return writer;
         }
 
+        public static HtmlTextWriter MarginRight(this HtmlTextWriter writer, string value)
+        {
+            writer.AddStyleAttribute(HtmlTextWriterStyle.MarginRight, value);
+            return writer;
+        }
+
         public static HtmlTextWriter Bold(this HtmlTextWriter writer)
         {
             writer.AddStyleAttribute(HtmlTextWriterStyle.FontWeight, "bold");

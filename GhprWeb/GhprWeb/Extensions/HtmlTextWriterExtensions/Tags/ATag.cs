@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.UI;
+using GhprWeb.Extensions.HtmlTextWriterExtensions.Styles;
 
 namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
 {
@@ -23,6 +24,23 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
                     .Href(itemHref))
                 .A(() => writer
                     .If(!itemOcticon.Equals(""), () => writer
+                        .Class(itemOcticon)
+                        .Span()
+                    )
+                    .Text(itemText)
+                );
+            return writer;
+        }
+
+        public static HtmlTextWriter TabNavTab(this HtmlTextWriter writer, string itemText, string itemHref = "", string itemOcticon = "", bool selected = false)
+        {
+            writer
+                .Class(selected ? "tabnav-tab selected" : "tabnav-tab")
+                .If(!itemHref.Equals(""), () => writer
+                    .Href(itemHref))
+                .A(() => writer
+                    .If(!itemOcticon.Equals(""), () => writer
+                        .MarginRight("5px")
                         .Class(itemOcticon)
                         .Span()
                     )
