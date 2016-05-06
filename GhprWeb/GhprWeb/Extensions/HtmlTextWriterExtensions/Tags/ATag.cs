@@ -38,7 +38,6 @@ namespace GhprWeb.Extensions.HtmlTextWriterExtensions.Tags
                 .Class(selected ? "tabnav-tab selected" : "tabnav-tab")
                 .If(!itemHref.Equals(""), () => writer
                     .Href(itemHref))
-                .OnClick("$($(this).attr(\'href\')).toggle();")
                 .A(() => writer
                     .If(!itemOcticon.Equals(""), () => writer
                         .MarginRight("5px")

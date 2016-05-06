@@ -3,6 +3,7 @@ using GhprWeb;
 using GhprWeb.EmbeddedResources;
 using GhprWeb.Extensions;
 using GhprWeb.Extensions.HtmlTextWriterExtensions;
+using GhprWeb.Extensions.HtmlTextWriterExtensions.Buttons;
 using GhprWeb.Extensions.HtmlTextWriterExtensions.Tags;
 using GhprWeb.Html;
 using static GhprWeb.EmbeddedResources.Resources;
@@ -73,18 +74,9 @@ namespace GhprWebConsole
                                 .TabNavTab("Globe", "#globe-div", "octicon octicon-globe")
                             )
                         )
+                        .ShowHideButton("show/hide togglable div", "#flame-div")
                         .TogglableDiv("flame-div", false, () => w
                             .H1("Flame!")
-                        )
-                        .TogglableDiv("bug-div", false, () => w
-                            .H1("Flame!")
-                        )
-                        .TogglableDiv("dashboard-div", false, () => w
-                            .H1("Flame!")
-                        )
-                        .TogglableDiv("globe-div", false, () => w
-                            .H2("Globe")
-                            .Text("globe")
                         )
                     ),
                 PageStylePaths = re.GetResoucresPaths(pageResources, Extension.Css),
